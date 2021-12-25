@@ -54,9 +54,14 @@ function fillTable() {
   //makes the rest of the table and gives each an id of its location
   for (let y = 0; y < NUM_QUESTIONS_PER_CAT; y++) {
     const row = document.createElement("tr");
+    let startingValue = 100;
     for (let x = 0; x < NUM_CATEGORIES; x++) {
       const cell = document.createElement("td");
-      cell.innerHTML = `<div id=${x}-${y}>?</div>`;
+      const isNotFirstColumn = x !== 0;
+      if (isNotFirstColumn) {
+        startingValue += 100;
+      }
+      cell.innerHTML = `<div id=${x}-${y}>$ ${startingValue}</div>`;
       row.append(cell);
     }
     jeopardyBoard.append(row);
@@ -113,4 +118,4 @@ $(document).ready(function () {
   setupAndStart();
   $("#jeopardy").on("click", "div", handleClick);
 });
-liuhyg;
+
